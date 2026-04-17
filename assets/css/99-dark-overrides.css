@@ -1,0 +1,219 @@
+:root {
+  --bg-night: #030407;
+  --bg-panel: rgba(13, 17, 24, 0.9);
+  --bg-panel-strong: rgba(8, 11, 16, 0.96);
+  --line: rgba(167, 182, 201, 0.18);
+  --line-strong: rgba(214, 188, 122, 0.62);
+  --accent: #d2b57c;
+  --accent-warm: #7f8ea6;
+  --text-main: #f3f5f8;
+  --text-soft: #a4aebb;
+  --shadow: 0 28px 70px rgba(0, 0, 0, 0.56);
+}
+html, body {
+  background: #020305;
+}
+.desktop-wallpaper {
+  background:
+    radial-gradient(circle at 18% 16%, rgba(210, 181, 124, 0.09), transparent 22%),
+    radial-gradient(circle at 82% 18%, rgba(136, 151, 173, 0.08), transparent 24%),
+    radial-gradient(circle at 65% 72%, rgba(59, 72, 92, 0.14), transparent 28%),
+    linear-gradient(135deg, #030407 0%, #0b1018 45%, #04060a 100%);
+}
+.desktop-wallpaper::after {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+}
+.scanlines {
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.02) 0,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  opacity: 0.05;
+}
+.verbose-loader,
+.boot-screen {
+  background:
+    radial-gradient(circle at center, rgba(210, 181, 124, 0.08), transparent 34%),
+    #010204;
+}
+.verbose-panel,
+.boot-panel,
+.window,
+.start-menu,
+.site-launch-core,
+.discord-float,
+.taskbar {
+  border-color: rgba(196, 168, 110, 0.16) !important;
+  box-shadow: var(--shadow);
+}
+.verbose-panel,
+.boot-panel,
+.window,
+.start-menu,
+.site-launch-core {
+  background: linear-gradient(180deg, rgba(14, 18, 26, 0.96), rgba(8, 11, 16, 0.96));
+}
+.window {
+  backdrop-filter: blur(18px);
+}
+.window::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,0.028), transparent 18%);
+}
+.window-header,
+.path-bar,
+.explorer-sidebar,
+.contact-link,
+.taskbar-chip,
+.start-item,
+.folder-card,
+.media-card,
+.production-banner,
+.guestbook-card,
+.arcade-hero,
+.games-aside,
+.game-panel {
+  background-color: rgba(255, 255, 255, 0.018) !important;
+  border-color: rgba(255, 255, 255, 0.07) !important;
+}
+.title-dot,
+.signal-chip,
+.tag,
+.eyebrow,
+.version-badge {
+  color: #f4dfb1 !important;
+}
+.signal-chip,
+.taskbar-chip.active,
+.start-button,
+.game-tab.active,
+.memory-pad.active,
+.site-launch-bar span,
+.boot-bar span,
+.verbose-progress span {
+  background: linear-gradient(90deg, #7f8998, #d2b57c) !important;
+}
+.boot-logo-core,
+.site-launch-mark,
+.icon-art,
+.game-tab.active,
+.desktop-icon:hover .icon-art {
+  box-shadow:
+    0 0 0 1px rgba(210,181,124,0.16),
+    0 0 28px rgba(210,181,124,0.12),
+    inset 0 0 16px rgba(255,255,255,0.04) !important;
+}
+.desktop-icon {
+  background: rgba(10, 12, 18, 0.38);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.contact-link:hover,
+.folder-link.active,
+.folder-link:hover,
+.start-item:hover,
+.taskbar-chip:hover,
+.window-btn:hover,
+.start-button:hover,
+.game-action:hover,
+.desktop-icon:hover {
+  border-color: rgba(210,181,124,0.34) !important;
+  box-shadow: 0 0 0 1px rgba(210,181,124,0.14), 0 12px 28px rgba(0,0,0,0.22);
+}
+.skip-boot {
+  margin-top: 14px;
+  align-self: flex-end;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(210,181,124,0.22);
+  background: rgba(255,255,255,0.02);
+  color: var(--text-main);
+  cursor: pointer;
+}
+.skip-boot:hover {
+  border-color: rgba(210,181,124,0.42);
+  transform: translateY(-1px);
+}
+.window-subtitle,
+.contact-note,
+.explorer-note,
+.boot-note {
+  color: var(--text-soft);
+}
+.contact-grid {
+  display: grid;
+  gap: 10px;
+}
+.guest-status {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+}
+.guest-status.ok { color: #cfe6bf; }
+.guest-status.warn { color: #f0d39c; }
+.guest-status.err { color: #ffb2a7; }
+.response-entry + .response-entry,
+.guest-preview-item + .guest-preview-item {
+  margin-top: 10px;
+}
+.guest-preview-item p,
+.response-entry p {
+  white-space: pre-wrap;
+}
+.version-badge {
+  border: 1px solid rgba(210,181,124,0.2);
+  background: rgba(8, 11, 16, 0.85);
+}
+.contact-panel h3,
+.production-banner h2,
+.hero-panel h2,
+.boot-panel h1,
+.verbose-panel h1 {
+  letter-spacing: 0.03em;
+}
+.contact-link small {
+  display: block;
+  margin-top: 2px;
+  color: var(--text-soft);
+}
+@media (max-width: 900px) {
+  .discord-float {
+    top: 10px;
+    right: 10px;
+  }
+  .skip-boot {
+    width: 100%;
+  }
+}
+
+body[data-scene="tournament"] .desktop-wallpaper {
+  filter: brightness(0.58) saturate(0.8);
+}
+
+body[data-scene="tournament"] .ambient-orbs,
+body[data-scene="tournament"] .scanlines {
+  opacity: 0.78;
+}
+
+.window-header {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent);
+}
+
+.window-btn {
+  transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.window-btn:hover {
+  transform: translateY(-1px);
+}
+
+.taskbar {
+  background: rgba(5, 8, 12, 0.92);
+}

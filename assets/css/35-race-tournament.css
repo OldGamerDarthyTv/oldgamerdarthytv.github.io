@@ -1,0 +1,271 @@
+.tournament-scene {
+  background:
+    linear-gradient(180deg, rgba(5, 8, 12, 0.94), rgba(4, 6, 10, 0.98)),
+    radial-gradient(circle at 50% 16%, rgba(237, 201, 126, 0.08), transparent 28%);
+}
+
+.tournament-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255, 222, 164, 0.08), transparent 28%),
+    linear-gradient(180deg, transparent 0 18%, rgba(255,255,255,0.025) 18% 18.5%, transparent 18.5% 22%, rgba(255,255,255,0.025) 22% 22.5%, transparent 22.5%),
+    linear-gradient(180deg, rgba(255,255,255,0.016) 0 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.012) 0 1px, transparent 1px);
+  background-size: auto, auto, auto 38px, 80px auto;
+  opacity: 0.6;
+}
+
+.moon-orbit {
+  position: absolute;
+  right: 7vw;
+  top: 7vh;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 35%, rgba(255,255,255,0.82), rgba(173, 181, 193, 0.96) 48%, rgba(72, 77, 88, 0.96) 100%);
+  box-shadow: 0 0 60px rgba(244, 227, 181, 0.1);
+  opacity: 0.82;
+}
+
+.tournament-hud {
+  position: absolute;
+  inset: 24px 24px auto 24px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.hud-copy,
+.season-card {
+  padding: 18px 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  background: rgba(7, 10, 16, 0.55);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.26);
+}
+
+.hud-copy h2 {
+  margin-bottom: 10px;
+  font-size: clamp(1.2rem, 2vw, 1.9rem);
+}
+
+.season-card strong {
+  display: block;
+  margin-bottom: 10px;
+  color: rgba(244, 220, 175, 0.95);
+}
+
+.season-card p + p {
+  margin-top: 8px;
+}
+
+.recent-winners {
+  margin: 14px 0 0;
+  padding-left: 18px;
+  color: rgba(238, 242, 248, 0.84);
+}
+
+.recent-winners li + li {
+  margin-top: 6px;
+}
+
+.track-shell {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: calc(var(--taskbar-h) + 20px);
+  top: 210px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(8, 10, 16, 0.76), rgba(10, 13, 19, 0.94)),
+    radial-gradient(circle at 50% 0, rgba(235, 197, 118, 0.08), transparent 36%);
+  overflow: hidden;
+  box-shadow: inset 0 0 34px rgba(255,255,255,0.02), 0 18px 40px rgba(0,0,0,0.28);
+}
+
+.track-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.025) 0 1px, transparent 1px),
+    linear-gradient(90deg, transparent 0 74%, rgba(255,255,255,0.08) 74% 74.5%, transparent 74.5% 100%);
+  background-size: auto 28px, auto auto;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.track-lanes {
+  position: absolute;
+  inset: 18px 16px 18px 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: minmax(24px, 1fr);
+  gap: 8px;
+}
+
+.race-lane {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 12px;
+  align-items: center;
+  --travel-distance: 800px;
+}
+
+.lane-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.lane-number {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: #fef7e3;
+  background: linear-gradient(180deg, var(--car-accent), rgba(12, 16, 24, 0.96));
+  box-shadow: 0 0 20px color-mix(in srgb, var(--car-accent) 18%, transparent);
+}
+
+.lane-label strong {
+  font-size: 0.98rem;
+  letter-spacing: 0.03em;
+  color: rgba(244, 247, 252, 0.96);
+}
+
+.lane-track {
+  position: relative;
+  height: 100%;
+  min-height: 24px;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.04) 0 6%, transparent 6% 8%, rgba(255,255,255,0.04) 8% 14%, transparent 14% 100%),
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  overflow: hidden;
+}
+
+.finish-line {
+  position: absolute;
+  top: -4px;
+  right: 68px;
+  bottom: -4px;
+  width: 14px;
+  background:
+    repeating-linear-gradient(180deg, rgba(255,255,255,0.96) 0 6px, rgba(20,20,20,0.96) 6px 12px);
+  box-shadow: 0 0 16px rgba(255,255,255,0.14);
+}
+
+.race-car {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  width: 78px;
+  height: 20px;
+  transform: translate3d(0, -50%, 0);
+}
+
+.car-glow,
+.car-body,
+.car-tail {
+  position: absolute;
+  display: block;
+}
+
+.car-glow {
+  inset: -7px -10px;
+  border-radius: 999px;
+  background: radial-gradient(circle, color-mix(in srgb, var(--car-accent) 34%, transparent), transparent 68%);
+  filter: blur(10px);
+  opacity: 0.7;
+}
+
+.car-body {
+  inset: 2px 12px 2px 0;
+  border-radius: 999px 10px 10px 999px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--car-accent) 80%, white), rgba(14, 18, 28, 0.96));
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.08);
+}
+
+.car-tail {
+  right: 0;
+  top: 8px;
+  width: 18px;
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255,216,150,0.96), transparent);
+}
+
+.race-lane.racing .car-tail {
+  animation: thruster-flicker 0.22s linear infinite;
+}
+
+.race-lane.winner .lane-label,
+.race-lane.winner .lane-track {
+  border-color: rgba(244, 219, 162, 0.44);
+  box-shadow: 0 0 0 1px rgba(244, 219, 162, 0.18), 0 0 28px rgba(244, 219, 162, 0.14);
+}
+
+.race-lane.winner .car-glow {
+  opacity: 1;
+}
+
+@keyframes thruster-flicker {
+  0%, 100% { transform: scaleX(0.8); opacity: 0.74; }
+  50% { transform: scaleX(1.12); opacity: 1; }
+}
+
+@media (max-width: 1180px) {
+  .tournament-hud {
+    grid-template-columns: 1fr;
+  }
+  .track-shell {
+    top: 260px;
+  }
+  .race-lane {
+    grid-template-columns: 160px 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .moon-orbit {
+    width: 90px;
+    height: 90px;
+  }
+  .tournament-hud {
+    inset: 16px 16px auto 16px;
+  }
+  .track-shell {
+    left: 12px;
+    right: 12px;
+    top: 300px;
+    bottom: calc(var(--taskbar-h) + 16px);
+  }
+  .track-lanes {
+    gap: 6px;
+  }
+  .race-lane {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .lane-label {
+    padding: 5px 8px;
+  }
+  .lane-label strong {
+    font-size: 0.82rem;
+  }
+}

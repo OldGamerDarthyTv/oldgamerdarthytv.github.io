@@ -1,0 +1,78 @@
+:root {
+  --screen-width: 1280px;
+  --screen-height: 720px;
+  --viewport-safe-height: 620px;
+  --game-canvas-height: 420px;
+}
+
+body[data-screen-mode="standard"] .desktop {
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+body[data-screen-mode="large"] .desktop,
+body[data-screen-mode="cinema"] .desktop {
+  padding-top: 30px;
+  padding-right: 36px;
+  padding-left: 36px;
+}
+
+body[data-screen-mode="large"] #gamesWindow,
+body[data-screen-mode="cinema"] #gamesWindow {
+  width: min(95vw, 1520px) !important;
+  max-width: min(95vw, 1520px) !important;
+  height: min(calc(100vh - var(--taskbar-h) - 18px), 840px) !important;
+}
+
+body[data-screen-ratio="landscape-wide"] #gamesWindow .games-switcher {
+  grid-template-columns: minmax(0, 1fr) 290px;
+}
+
+body[data-screen-mode="large"] #gamesWindow .window-body,
+body[data-screen-mode="cinema"] #gamesWindow .window-body {
+  padding: 18px;
+}
+
+body[data-screen-mode="large"] #gamesWindow #snakeCanvas,
+body[data-screen-mode="large"] #gamesWindow #catcherCanvas,
+body[data-screen-mode="large"] #gamesWindow #dodgerCanvas,
+body[data-screen-mode="large"] #gamesWindow #reactorCanvas,
+body[data-screen-mode="cinema"] #gamesWindow #snakeCanvas,
+body[data-screen-mode="cinema"] #gamesWindow #catcherCanvas,
+body[data-screen-mode="cinema"] #gamesWindow #dodgerCanvas,
+body[data-screen-mode="cinema"] #gamesWindow #reactorCanvas {
+  height: min(var(--game-canvas-height), calc(100vh - 300px));
+}
+
+body[data-screen-mode="large"] #gamesWindow.maximized #snakeCanvas,
+body[data-screen-mode="large"] #gamesWindow.maximized #catcherCanvas,
+body[data-screen-mode="large"] #gamesWindow.maximized #dodgerCanvas,
+body[data-screen-mode="large"] #gamesWindow.maximized #reactorCanvas,
+body[data-screen-mode="cinema"] #gamesWindow.maximized #snakeCanvas,
+body[data-screen-mode="cinema"] #gamesWindow.maximized #catcherCanvas,
+body[data-screen-mode="cinema"] #gamesWindow.maximized #dodgerCanvas,
+body[data-screen-mode="cinema"] #gamesWindow.maximized #reactorCanvas {
+  height: min(calc(var(--game-canvas-height) + 32px), calc(100vh - 270px));
+}
+
+body[data-screen-mode="large"] #gamesWindow .games-aside,
+body[data-screen-mode="cinema"] #gamesWindow .games-aside {
+  min-width: 0;
+}
+
+body[data-screen-mode="compact"] #gamesWindow .games-switcher {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+body[data-screen-mode="compact"] #gamesWindow .games-aside,
+body[data-screen-mode="compact"] #gamesWindow .game-panel.active {
+  grid-column: 1;
+}
+
+body[data-screen-mode="compact"] #gamesWindow .games-aside {
+  grid-row: 3;
+}
+
+body[data-screen-mode="compact"] #gamesWindow .game-panel.active {
+  grid-row: 2;
+}

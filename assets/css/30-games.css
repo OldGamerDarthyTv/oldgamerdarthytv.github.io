@@ -1,0 +1,396 @@
+.game-tab {
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.game-tab.active {
+  border-color: var(--line-strong);
+  background: rgba(79, 209, 255, 0.14);
+}
+
+.game-panel {
+  display: none;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.game-panel.active {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  align-content: start;
+  min-height: 0;
+}
+
+.game-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+
+.game-head p,
+.game-help {
+  color: var(--text-soft);
+}
+
+.game-stats {
+  display: grid;
+  gap: 10px;
+  justify-items: end;
+}
+
+.game-action {
+  min-width: 150px;
+}
+
+#snakeCanvas,
+#catcherCanvas,
+#dodgerCanvas,
+#reactorCanvas {
+  width: 100%;
+  max-width: none;
+  aspect-ratio: 16 / 9;
+  display: block;
+  border: 1px solid rgba(79, 209, 255, 0.18);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at top, rgba(79, 209, 255, 0.1), transparent 35%),
+    linear-gradient(180deg, rgba(3, 8, 16, 0.98), rgba(4, 12, 20, 0.96));
+  box-shadow: inset 0 0 28px rgba(79, 209, 255, 0.06);
+}
+
+.game-help {
+  margin: 0;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+#memoryGamePanel {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.memory-board {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(120px, 1fr));
+  gap: 14px;
+  max-width: none;
+}
+
+.memory-pad {
+  aspect-ratio: 1 / 1;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  cursor: pointer;
+  transition: transform 0.12s ease, filter 0.12s ease, box-shadow 0.12s ease;
+}
+
+.memory-pad:active,
+.memory-pad.active {
+  transform: scale(0.97);
+  filter: brightness(1.28);
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.14);
+}
+
+.pad-a { background: linear-gradient(145deg, rgba(79, 209, 255, 0.86), rgba(28, 115, 255, 0.76)); }
+.pad-b { background: linear-gradient(145deg, rgba(255, 163, 77, 0.9), rgba(255, 102, 61, 0.74)); }
+.pad-c { background: linear-gradient(145deg, rgba(109, 255, 178, 0.86), rgba(31, 176, 126, 0.74)); }
+.pad-d { background: linear-gradient(145deg, rgba(190, 124, 255, 0.86), rgba(104, 72, 255, 0.74)); }
+
+#gamesWindow .window-body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#gamesWindow .games-shell {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 14px;
+  min-height: 0;
+  height: 100%;
+}
+
+#gamesWindow .arcade-intro {
+  margin-top: 0;
+  overflow: auto;
+}
+
+#gamesWindow .games-switcher {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 14px;
+  margin: 0;
+  min-height: 0;
+  align-items: stretch;
+}
+
+#gamesWindow .games-tabs {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#gamesWindow .games-aside {
+  grid-column: 2;
+  grid-row: 2;
+  min-height: 0;
+  overflow: auto;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+#gamesWindow .game-panel.active {
+  grid-column: 1;
+  grid-row: 2;
+  min-height: 0;
+  overflow: auto;
+}
+
+#gamesWindow.maximized .game-panel.active,
+body[data-screen-mode="large"] #gamesWindow .game-panel.active {
+  height: 100%;
+}
+
+#gamesWindow.maximized #snakeCanvas,
+#gamesWindow.maximized #catcherCanvas,
+#gamesWindow.maximized #dodgerCanvas,
+#gamesWindow.maximized #reactorCanvas,
+body[data-screen-mode="large"] #gamesWindow #snakeCanvas,
+body[data-screen-mode="large"] #gamesWindow #catcherCanvas,
+body[data-screen-mode="large"] #gamesWindow #dodgerCanvas,
+body[data-screen-mode="large"] #gamesWindow #reactorCanvas {
+  height: min(52vh, calc(100vh - 330px));
+}
+
+.start-menu {
+  position: fixed;
+  left: 14px;
+  bottom: calc(var(--taskbar-h) + 10px);
+  z-index: 2200;
+  width: min(360px, calc(100vw - 28px));
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(6, 12, 20, 0.95);
+  box-shadow: var(--shadow);
+  display: none;
+}
+
+.version-badge {
+  position: fixed;
+  right: 18px;
+  bottom: calc(var(--taskbar-h) + 12px);
+  z-index: 2100;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(6, 10, 18, 0.72);
+  color: rgba(237, 248, 255, 0.72);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  backdrop-filter: blur(12px);
+}
+
+.start-menu.open {
+  display: block;
+}
+
+.start-head {
+  margin-bottom: 16px;
+  padding: 14px;
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(79, 209, 255, 0.14), rgba(255, 163, 77, 0.12));
+}
+
+.start-head p,
+.start-head span {
+  margin: 0;
+}
+
+.start-head span {
+  color: var(--text-soft);
+}
+
+.taskbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2500;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  align-items: center;
+  min-height: var(--taskbar-h);
+  padding: 10px 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(6, 10, 18, 0.9);
+  backdrop-filter: blur(16px);
+}
+
+.start-button,
+.taskbar-chip {
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.taskbar-windows {
+  display: flex;
+  gap: 10px;
+  overflow: auto;
+}
+
+.taskbar-chip.active {
+  border-color: var(--line-strong);
+  background: rgba(79, 209, 255, 0.16);
+}
+
+.taskbar-status {
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: var(--text-soft);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+@media (max-width: 900px) {
+  body {
+    overflow: auto;
+  }
+
+  .desktop {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .desktop-icon {
+    display: inline-grid;
+    margin-right: 12px;
+  }
+
+  .window,
+  .window.maximized {
+    position: relative;
+    inset: auto !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    max-width: none;
+    margin-top: 16px;
+  }
+
+  .explorer-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .taskbar {
+    grid-template-columns: 1fr;
+  }
+
+  .version-badge {
+    right: 12px;
+    bottom: calc(var(--taskbar-h) + 10px);
+  }
+
+  #gamesWindow .window-body,
+  #gamesWindow .game-panel.active,
+  #gamesWindow .games-aside {
+    overflow: visible;
+  }
+
+  #gamesWindow .games-switcher {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #gamesWindow .games-aside,
+  #gamesWindow .game-panel.active {
+    grid-column: 1;
+  }
+
+  #gamesWindow .games-aside {
+    grid-row: 3;
+  }
+
+  #gamesWindow .game-panel.active {
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 1400px) {
+  .desktop {
+    padding-top: 22px;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .desktop-icon {
+    width: 82px;
+  }
+
+  .leaderboard-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .guestbook-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1180px) {
+  #gamesWindow .games-switcher {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #gamesWindow .games-aside,
+  #gamesWindow .game-panel.active {
+    grid-column: 1;
+  }
+
+  #gamesWindow .games-aside {
+    grid-row: 3;
+  }
+
+  #gamesWindow .game-panel.active {
+    grid-row: 2;
+  }
+}
+
+@media (max-height: 860px) {
+  #gamesWindow .window-body {
+    padding: 16px;
+  }
+
+  #gamesWindow .games-shell,
+  #gamesWindow .games-switcher,
+  #gamesWindow .game-panel.active {
+    gap: 12px;
+  }
+
+  #gamesWindow #snakeCanvas,
+  #gamesWindow #catcherCanvas,
+  #gamesWindow #dodgerCanvas,
+  #gamesWindow #reactorCanvas {
+    height: min(46vh, calc(100vh - 320px));
+  }
+
+  #gamesWindow .game-help {
+    padding: 12px;
+  }
+}

@@ -1,0 +1,240 @@
+:root {
+  --bg-night: #09111d;
+  --bg-panel: rgba(8, 16, 29, 0.86);
+  --bg-panel-strong: rgba(5, 12, 22, 0.94);
+  --line: rgba(125, 214, 255, 0.28);
+  --line-strong: rgba(125, 214, 255, 0.68);
+  --accent: #4fd1ff;
+  --accent-warm: #ffa34d;
+  --text-main: #edf8ff;
+  --text-soft: #9eb4c6;
+  --shadow: 0 22px 55px rgba(0, 0, 0, 0.38);
+  --taskbar-h: 62px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  overflow: hidden;
+  color: var(--text-main);
+  font-family: "Rajdhani", sans-serif;
+  background: #060c16;
+}
+
+body {
+  position: relative;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+.desktop-wallpaper {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 15% 15%, rgba(79, 209, 255, 0.22), transparent 28%),
+    radial-gradient(circle at 82% 18%, rgba(255, 163, 77, 0.18), transparent 24%),
+    radial-gradient(circle at 65% 72%, rgba(55, 123, 255, 0.2), transparent 30%),
+    linear-gradient(135deg, #050914 0%, #0d1726 42%, #060b13 100%);
+}
+
+.desktop-wallpaper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 1));
+}
+
+.discord-float {
+  position: fixed;
+  top: 16px;
+  right: 18px;
+  z-index: 2300;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  background: rgba(8, 12, 20, 0.84);
+  color: #edf8ff;
+  text-decoration: none;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+.discord-logo {
+  width: 34px;
+  height: 34px;
+  display: inline-grid;
+  place-items: center;
+  color: #eef3ff;
+  border-radius: 999px;
+  box-shadow: 0 0 22px rgba(124, 140, 255, 0.28);
+}
+
+.discord-logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.discord-text {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #eef3ff;
+}
+
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at center, rgba(79, 209, 255, 0.08), transparent 35%), #02060b;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.verbose-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 3200;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at top, rgba(79, 209, 255, 0.08), transparent 30%),
+    #010308;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.verbose-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.verbose-panel {
+  width: min(92vw, 760px);
+  padding: 28px;
+  border: 1px solid rgba(79, 209, 255, 0.2);
+  background: rgba(2, 8, 16, 0.96);
+  box-shadow: var(--shadow);
+}
+
+.verbose-panel h1 {
+  margin: 10px 0 18px;
+  font-family: "Orbitron", sans-serif;
+}
+
+.boot-logo-storm {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  margin: 0 auto 18px;
+}
+
+.boot-logo-core {
+  position: absolute;
+  inset: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  font-family: "Orbitron", sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.18em;
+  color: #edf8ff;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,255,255,0.26), transparent 30%),
+    radial-gradient(circle at center, rgba(79, 209, 255, 0.28), rgba(8, 16, 29, 0.96));
+  border: 1px solid rgba(79, 209, 255, 0.28);
+  box-shadow:
+    0 0 32px rgba(79, 209, 255, 0.22),
+    inset 0 0 24px rgba(255, 255, 255, 0.05);
+}
+
+.boot-bolt {
+  position: absolute;
+  width: 48px;
+  height: 88px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(79, 209, 255, 0.88));
+  clip-path: polygon(46% 0, 72% 0, 56% 35%, 84% 35%, 28% 100%, 42% 58%, 18% 58%);
+  filter: drop-shadow(0 0 14px rgba(125, 246, 255, 0.8));
+  opacity: 0;
+  animation: lightning-flash 2.7s linear infinite;
+}
+
+.bolt-a {
+  left: 0;
+  top: 20px;
+  transform: rotate(-12deg);
+}
+
+.bolt-b {
+  right: 4px;
+  top: 8px;
+  transform: rotate(18deg) scale(0.88);
+  animation-delay: 0.8s;
+}
+
+.bolt-c {
+  left: 58px;
+  bottom: -2px;
+  transform: rotate(8deg) scale(0.78);
+  animation-delay: 1.6s;
+}
+
+@keyframes lightning-flash {
+  0%, 18%, 100% {
+    opacity: 0;
+  }
+  2%, 6% {
+    opacity: 1;
+  }
+  8% {
+    opacity: 0.35;
+  }
+  10% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 0;
+  }
+}
+
+.verbose-console {
+  height: 280px;
+  overflow: hidden;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.35);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #98ffcb;
+}
+
+.verbose-line {
+  opacity: 0;
+  transform: translateY(6px);
+  animation: console-line 0.35s ease forwards;
+}
+
+.verbose-progress {
+  margin-top: 16px;
+}
+
+@keyframes console-line {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
